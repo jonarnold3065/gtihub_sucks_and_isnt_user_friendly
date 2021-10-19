@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tableau Crashboard</title>
+
+    <!-- Bootstrap and Bootswatch CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/minty/bootstrap.min.css">
+
+    <!-- Javascript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+
+    <!-- Visualization Libs -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="./static/js/app.js"></script>
+    <style>
+
+        /* body {
+        background-color: rgb(163, 162, 170);
+        } */
+        h1 {
+            text-shadow: 2px 2px 5px #78C2AD;
+        }
+        p {
+            font-weight: bold;
+        }
+        .navbar-custom {
+            background-color: rgb(6, 10, 202);
+        }
+
+        .demo{
+            background-color: rgb(247, 247, 247);
+        }
+
+        .gauge{
+            border-style: double;
+            border: 2px solid rgb(108, 14, 185);
+            border-radius: 8px;
+            padding: 5px;
+        }
+
+        .bubble{
+            border-style: double;
+            border: 2px solid rgb(108, 14, 185);
+            border-radius: 8px;
+            padding: 5px;
+            margin-left: 20px;
+        }
+ 
+        .demo{
+            border-style: double;
+            border: 2px solid rgb(108, 14, 185);
+            border-radius: 8px;
+            padding: 5px;
+            margin-left: 20px;
+        } 
+
+        .card{
+            border-style: double;
+            border: 2px solid rgb(108, 14, 185);
+            border-radius: 8px;
+            padding: 5px;
+        } 
+
+        .bar{
+            border-style: double;
+            border: 2px solid rgb(108, 14, 185);
+            border-radius: 8px;
+            padding: 5px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <a class="navbar-brand" href="#">Tableau and Stuff (pronounced ta-blow)</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="https://public.tableau.com/en-us/s/">Tableau Site <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://public.tableau.com/en-us/s/resources">Tableau Resources (if you want to pay for it...</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+               
+                <a class="dropdown-item" href="https://public.tableau.com/views/Mapexercises/Sheet6?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link">Colored Bar Chart</a>
+                <a class="dropdown-item" href="https://public.tableau.com/views/Mapexercises/Sheet4?:language=en-US&:embed_code_version=3&:loadOrderID=1&:display_count=n&publish=yes&:origin=viz_share_link">Bar Chart</a>
+                <a class="dropdown-item" href="index.html">Home</a>
+              </div>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li> -->
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+          <br>
+          <hr>
+        </div>
+      </nav>
+
+    <div class="container-fluid">
+        <br>
+        <div class="row">
+            <div class="col-md-12  text-center">
+                <h1>Tableau Dashboard on that Sales Stuff we did</h1>
+                <p>My meager attempt at creating an interactive crashboard</p>
+            </div>
+                
+                    <!-- <h4 class="card-title">One of the most interesting studies of the human body!</h4> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="bar col-md-5" >
+                <div class='tableauPlaceholder' id='viz1634606687948' style='position: relative'><noscript><a href='#'><img alt='Sheet 6 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;Mapexercises&#47;Sheet6&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Mapexercises&#47;Sheet6' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;Mapexercises&#47;Sheet6&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1634606687948');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.50)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+            </div>
+            <div class="gauge col-md-5">
+                <div class='tableauPlaceholder' id='viz1634606559905' style='position: relative'><noscript><a href='#'><img alt='Sheet 4 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;Mapexercises&#47;Sheet4&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Mapexercises&#47;Sheet4' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;Mapexercises&#47;Sheet4&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1634606559905');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.50)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+            <div class="bubble col-md-10" >
+                <div class='tableauPlaceholder' id='viz1634603362370' style='position: relative'><noscript><a href='#'><img alt='Sheet 9 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;Mapexercises&#47;Sheet9&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Mapexercises&#47;Sheet9' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;Mapexercises&#47;Sheet9&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1634603362370');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.50)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+       
+            </div>
+          
+        </div>
+    </div>
+</body>
+
+</html>
